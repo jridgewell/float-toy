@@ -1,4 +1,4 @@
-# Float Toy
+# Integer Toy
 
-Visit [http://evanw.github.io/float-toy/](http://evanw.github.io/float-toy/) to play around.
-Use this to build intuition for the IEEE floating-point format.
+Visit [http://jridgewell.github.io/integer-toy/](http://jridgewell.github.io/integer-toy/) to play around.
+Use this to build intuition for two's complement integers.
