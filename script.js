@@ -1,6 +1,7 @@
-function load(array, input, output, help, hex) {
+function load(array, input, output, help, hex, leftshift, rightshift, rightrightshift) {
   var bytes = new Uint8Array(array.buffer);
   var hexLength = bytes.length;
+  var bit = array.byteLength === 8 ? 1n : 1;
 
   function reduceNumber(x) {
     return x;
@@ -138,6 +139,37 @@ function load(array, input, output, help, hex) {
       };
     }
   };
+  leftshift.onmousedown = function () {
+    var carry = 0;
+    for (var i = 0; i < bytes.length; i++) {
+      var v = bytes[i] << 1;
+      bytes[i] = v | (carry ? 0x1 : 0x0);
+      carry = v & 0x100;
+    }
+    render();
+  }
+  rightshift.onmousedown = function () {
+    var sign = bytes[bytes.length - 1] & 0x80;
+    var carry = 0;
+    for (var i = bytes.length - 1; i >= 0; i--) {
+      var c = bytes[i] & 1;
+      var v = bytes[i] >> 1;
+      bytes[i] = v | (carry ? 0x80 : 0x0);
+      carry = c;
+    }
+    if (sign) bytes[bytes.length - 1] |= 0x80;
+    render();
+  }
+  rightrightshift.onmousedown = function () {
+    var carry = 0;
+    for (var i = bytes.length - 1; i >= 0; i--) {
+      var c = bytes[i] & 1;
+      var v = bytes[i] >> 1;
+      bytes[i] = v | (carry ? 0x80 : 0x0);
+      carry = c;
+    }
+    render();
+  }
 
   // Update loop
   function render() {
@@ -212,26 +244,38 @@ load(
   document.getElementById("input8"),
   document.getElementById("output8"),
   document.getElementById("help8"),
-  document.getElementById("hex8")
+  document.getElementById("hex8"),
+  document.getElementById("leftshift8"),
+  document.getElementById("rightshift8"),
+  document.getElementById("rightrightshift8")
 );
 load(
   new Int16Array([42]),
   document.getElementById("input16"),
   document.getElementById("output16"),
   document.getElementById("help16"),
-  document.getElementById("hex16")
+  document.getElementById("hex16"),
+  document.getElementById("leftshift16"),
+  document.getElementById("rightshift16"),
+  document.getElementById("rightrightshift16")
 );
 load(
   new Int32Array([42]),
   document.getElementById("input32"),
   document.getElementById("output32"),
   document.getElementById("help32"),
-  document.getElementById("hex32")
+  document.getElementById("hex32"),
+  document.getElementById("leftshift32"),
+  document.getElementById("rightshift32"),
+  document.getElementById("rightrightshift32")
 );
 load(
   new BigInt64Array([42n]),
   document.getElementById("input64"),
   document.getElementById("output64"),
   document.getElementById("help64"),
-  document.getElementById("hex64")
+  document.getElementById("hex64"),
+  document.getElementById("leftshift64"),
+  document.getElementById("rightshift64"),
+  document.getElementById("rightrightshift64")
 );

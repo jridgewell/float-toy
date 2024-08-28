@@ -112,6 +112,10 @@
   span.sign { background: #DDF; }
   span.integer { background: #FDD; }
 
+  .shift {
+    width: 20%;
+  }
+
 </style>
 <body>
   <h1>Integer Toy</h1>
@@ -136,6 +140,13 @@
       <td class="hex-col"><input id="output8" class="output"></td>
     </tr>
   </table>
+  <table class="shift">
+    <tr>
+      <td><button id="leftshift8">&#8810;</button></td>
+      <td><button id="rightshift8">&#8811;</button></td>
+      <td><button id="rightrightshift8">&#8921;</button></td>
+    </tr>
+  </table>
 
   <h2>16-bit (short)</h2>
   <table>
@@ -150,6 +161,13 @@
       <td><span id="help16" class="help"></span></td>
       <td>&nbsp;&nbsp;=&nbsp;&nbsp;</td>
       <td class="hex-col"><input id="output16" class="output"></td>
+    </tr>
+  </table>
+  <table class="shift">
+    <tr>
+      <td><button id="leftshift16">&#8810;</button></td>
+      <td><button id="rightshift16">&#8811;</button></td>
+      <td><button id="rightrightshift16">&#8921;</button></td>
     </tr>
   </table>
 
@@ -168,6 +186,13 @@
       <td class="hex-col"><input id="output32" class="output"></td>
     </tr>
   </table>
+  <table class="shift">
+    <tr>
+      <td><button id="leftshift32">&#8810;</button></td>
+      <td><button id="rightshift32">&#8811;</button></td>
+      <td><button id="rightrightshift32">&#8921;</button></td>
+    </tr>
+  </table>
 
   <h2>64-bit (long long)</h2>
   <table>
@@ -182,6 +207,13 @@
       <td><span id="help64" class="help"></span></td>
       <td>&nbsp;&nbsp;=&nbsp;&nbsp;</td>
       <td class="hex-col"><input id="output64" class="output"></td>
+    </tr>
+  </table>
+  <table class="shift">
+    <tr>
+      <td><button id="leftshift64">&#8810;</button></td>
+      <td><button id="rightshift64">&#8811;</button></td>
+      <td><button id="rightrightshift64">&#8921;</button></td>
     </tr>
   </table>
 </body>
